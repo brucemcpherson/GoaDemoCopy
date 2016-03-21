@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- styles -->
+<?!= HtmlService.createHtmlOutputFromFile('styles.css').getContent(); ?>
+
+<div class=content>
+<h2>Cloud vision library</h2>
+</div>
+
+<div class="content" id="control" style="display:block;">
+
+  <div class="block">
+    <label for="feature">Type of detection</label>
+    <select  id="feature">
+    <option value="LABEL_DETECTION" selected>Label detection</option>
+    <option value="FACE_DETECTION">Face detection</option>
+    </select>
+  </div>  
+  
+  <div class="block">
+    <label for="maxresponses">Maximum number of reponses</label>
+    <input type="number" name="maxresponses" id="maxresponses" min="1" max="5" value="1">
+  </div> 
+
+  <div class="block">
+    <label for="folderid">Folder id containing images</label>
+    <select id="folderid">
+    <option value="0B92ExLh4POiZYzZZT3d0aU9VV1U" selected>Pets</option>
+    <option value="0B92ExLh4POiZZDNKcVN0QTJJMGs">Faces</option>
+    </select>
+  </div> 
+
+  <div class="block">
+    <button class="action" id="go">Analyze</button>
+  </div>
+
+</div>
+
+<div class="content" style="display:block;">
+  <div class = "block">
+    <div id="message" class="message"></div>
+  </div>
+</div>
+
+<div id="render" class="content" style="display:none;">
+
+  <div  id="report"></div>
+  
+  <div class="block">
+    <button id="reset" class="red">Reset</button>
+  </div>
+
+</div>
+ 
+<!-- javascript. -->
+<?!= requireJs(['mainasme']); ?>
+<?!= requireGs(['Client','Server','App','Render']); ?>
+
+
+
+
