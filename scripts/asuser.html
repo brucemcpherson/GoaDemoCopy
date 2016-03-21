@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- styles -->
+<?!= HtmlService.createHtmlOutputFromFile('styles.css').getContent(); ?>
+</head>
+<body>
+<div class=content>
+<h2>Cloud vision library</h2>
+</div>
+
+<div class="content" id="control" style="display:block;">
+
+  <div class="block">
+    <label for="feature">Type of detection</label>
+    <select  id="feature">
+    <option value="LABEL_DETECTION" selected>Label detection</option>
+    <option value="FACE_DETECTION">Face detection</option>
+    </select>
+  </div>  
+  
+  <div class="block">
+    <label for="maxresponses">Maximum number of reponses</label>
+    <input type="number" name="maxresponses" id="maxresponses" min="1" max="5" value="1">
+  </div> 
+
+  
+  <div class="block">
+    <label for="folderid" id="folderlabel"><? 
+      var root = DriveApp.getRootFolder();
+      var folderId = root.getId();
+      var folderName = root.getName();
+    ?><?=folderName?> (<?=folderId?>)</label>
+    <input type="hidden" id="folderid" value="<?=folderId?>" disabled>
+    <button id="getfolder">Change folder</button>
+  </div>
+
+  <div class="block">
+    <button class="action" id="go">Analyze</button>
+  </div>
+
+</div>
+
+<div class="content" style="display:block;">
+  <div class = "block">
+    <div id="message" class="message"></div>
+  </div>
+</div>
+
+<div id="render" class="content" style="display:none;">
+
+  <div  id="report"></div>
+  
+  <div class="block">
+    <button id="reset" class="red">Reset</button>
+  </div>
+
+</div>
+
+<!-- javascript. -->
+<script src="https://www.google.com/jsapi"></script>
+
+<?!= requireJs(['mainasuser']); ?>
+<?!= requireGs(['Client','Server','App','Render','Picker']); ?>
+
+</body>
+</html>
+
+
+
+
