@@ -27,6 +27,8 @@ function logVision (accessToken) {
   
 }
 
+
+
 function cloudVisionAnnonate (accessToken, folderId , type, maxResults) {
   
   // the API end point
@@ -76,11 +78,12 @@ function cloudVisionAnnonate (accessToken, folderId , type, maxResults) {
     })};
   // can cost money so use cache
   var cache = CacheService.getScriptCache();
-  var cacheKey = Utilities.base64Encode(
-    Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_1, files.map(function(d) { 
+  var cacheKey = cUseful.Utils.keyDigest(files.map(function(d) { 
       return d.id; 
-    }).concat ([type,maxResults]).join("_") ));
+    }),type,maxResults);;
+  
 
+  
   var cacheData = cache.get(cacheKey);
   var result;
   
