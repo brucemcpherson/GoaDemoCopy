@@ -53,10 +53,64 @@ var Pull = (function (ns) {
     return {
       headings:headings,
       feature:package.feature,
-      data:data
+      data:data,
+      scale:ns.scale (package.feature, headings, data)
     };
   };
   
+  /**
+   * the cloudvision gives a categorized scale for emotion
+   * this is going to assign values
+   * @param {string} feature the feature requested
+   */
+  ns.scale = function (feature,headings,data) {
+    // still working on...
+    return [];
+    /*
+    // work out scaled values
+    // this takes the average of each row after scaling
+    data.forEach(function(item){
+      item.scales = headings.reduce(function(p,c) {
+        p[c.replace('Likelihood','')] = item.rows.reduce(function(ip,ic) {
+          return ip + App.globals.features[package.feature].scale(ic[c]);
+        },0)/item.rows.length;
+        return p;
+      }, {});
+    });
+  }
+  
+  features: {
+      scales: {
+        "VERY_LIKELY":0.95, 
+        "VERY_UNLIKELY":0.05,
+        "POSSIBLE":0.5,
+        "LIKELY":0.7,
+        "UNLIKELY":0.3,
+        "UNKNOWN":0
+      },
+      "FACE_DETECTION":{
+        scale:function (value) {
+          var r = ns.globals.features.scales[value];
+          if (typeof r === typeof undefined) {
+            throw 'unexpected scale value ' + value;
+          }
+          return r;
+        },
+        filter: function (ob,key) {
+           return typeof ob[key] !== 'object' && key.indexOf('hood')!==-1;
+        }
+      }, 
+      "LABEL_DETECTION": {
+        filter: function (ob,key) {
+           return true;
+        },
+        scale:function (value) {
+          return 1;
+        }
+      }
+    }
+  */
+  };
   /**
   * do the pets image analysis
   * @param {string} accessToken the accessToken
