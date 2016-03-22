@@ -1,5 +1,5 @@
 # Google Apps Script Project: GoaDemoCopy
-This repo (GoaDemoCopy) was automatically updated on 21 March 2016 14:23:46 GMT by GasGit
+This repo (GoaDemoCopy) was automatically updated on 22 March 2016 11:35:57 GMT by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project GoaDemoCopy
@@ -31,6 +31,7 @@ mainasme.js| html
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
 cGoa| cGoa|MZx5DzNPsYjVyZaR67xXJQai_d-phDA33|14|no|[here](libraries/cGoa "library source")
+cUseful| cUseful|Mcbr-v4SsYKJP7JMohttAZyz3TLx7pV4j|43|no|[here](libraries/cUseful "library source")
 ### All dependencies and sub dependencies
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
