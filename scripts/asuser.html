@@ -14,8 +14,9 @@
   <div class="block">
     <label for="feature">Type of detection</label>
     <select  id="feature">
-    <option value="LABEL_DETECTION" selected>Label detection</option>
+    <option value="LABEL_DETECTION">Label detection</option>
     <option value="FACE_DETECTION">Face detection</option>
+    <option value="EMOTION_DETECTION" selected>Emotion chart</option>
     </select>
   </div>  
   
@@ -28,11 +29,17 @@
   <div class="block">
     <label for="folderid" id="folderlabel"><? 
       var root = DriveApp.getRootFolder();
+      var root = DriveApp.getFolderById('0B92ExLh4POiZZDNKcVN0QTJJMGs');
       var folderId = root.getId();
       var folderName = root.getName();
     ?><?=folderName?> (<?=folderId?>)</label>
     <input type="hidden" id="folderid" value="<?=folderId?>" disabled>
     <button id="getfolder">Change folder</button>
+  </div>
+  
+  <div class="block">
+    <label for="usecache">Use cache</label>
+    <input type="checkbox" id="usecache" checked>
   </div>
 
   <div class="block">
@@ -59,6 +66,8 @@
 
 <!-- javascript. -->
 <script src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.1.1/chroma.min.js"></script>
 
 <?!= requireJs(['mainasuser']); ?>
 <?!= requireGs(['Client','Server','App','Render','Picker']); ?>
