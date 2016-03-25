@@ -18,7 +18,7 @@ var Server = (function (ns) {
    * return {object} stats updated stats object
    */
   ns.provoke = function (package) {
-    return Pull.getDataFor ( Goth.getToken(PARAMS.PACKAGE_NAME, PARAMS[PARAMS.TYPE].props), package);
+    return Pull.getDataFor ( Globals.getToken(), package);
   };
  
   /**
@@ -27,8 +27,8 @@ var Server = (function (ns) {
    */
   ns.pickerKeys = function () {
     return {
-      token:Goth.getToken(PARAMS.PACKAGE_NAME, PARAMS[PARAMS.TYPE].props),
-      key:Goth.getGoa (PARAMS.PACKAGE_NAME, PARAMS[PARAMS.TYPE].props).getProperty ('apiKey') 
+      token:Globals.getToken(),
+      key:Globals.getGoa().getProperty ('apiKey') 
     }
   };
 
