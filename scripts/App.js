@@ -9,10 +9,14 @@ var App = (function (ns) {
   // static with no effect on both client and server
   ns.globals = {
     result:null,
+    nocache:false,
     styles: {
       image: {
         width:"100px",
         height:"auto"
+      },
+      chart: {
+        width:200
       }
     }
   };
@@ -30,7 +34,8 @@ var App = (function (ns) {
       render:document.getElementById('render'),
       reset:document.getElementById('reset'),
       getFolder:document.getElementById('getfolder'),
-      folderLabel:document.getElementById('folderlabel')
+      folderLabel:document.getElementById('folderlabel'),
+      useCache:document.getElementById('usecache')
     };
     
     ns.listeners();
@@ -89,6 +94,10 @@ var App = (function (ns) {
       
     });
 
+    listen(ns.globals.divs.useCache,"change", function (e) {
+      App.globals.noCache = !ns.globals.divs.useCache.checked;
+    });
+    
     listen(ns.globals.divs.go,"click", function (e) {
       Client.provoke();
     });
