@@ -27,8 +27,13 @@ var Client = (function (ns) {
       // render result
       App.reportMessage('rendering...');
       App.globals.result = result;
-      Render.report();
-      
+      if (App.globals.divs.feature.value === "EMOTION_DETECTION") {
+        Render.emotion();
+      }
+      else {
+        Render.report();
+      }
+
       // adjust what's shown
       Render.hide (App.globals.divs.control,true);
       Render.hide (App.globals.divs.render,false);
@@ -42,8 +47,11 @@ var Client = (function (ns) {
       'Server',
       'provoke', {
         folderId:App.globals.divs.folderId.value, 
-        feature:App.globals.divs.feature.value ,
-        maxResponses:parseInt(App.globals.divs.maxResponses.value,10)
+        feature:App.globals.divs.feature.value === "EMOTION_DETECTION" ? "FACE_DETECTION" : App.globals.divs.feature.value,
+        maxResponses:parseInt(App.globals.divs.maxResponses.value,10),
+        dataFilter:App.globals.divs.feature.value === "EMOTION_DETECTION" || 
+          App.globals.divs.feature.value === "FACE_DETECTION" ? "EMOTION" : "",
+        noCache:App.globals.noCache
       }
     );
   };
