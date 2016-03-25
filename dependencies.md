@@ -1,5 +1,5 @@
 # Google Apps Script Project: GoaDemoCopy
-This repo (GoaDemoCopy) was automatically updated on 22 March 2016 11:35:57 GMT by GasGit
+This repo (GoaDemoCopy) was automatically updated on 25 March 2016 16:02:11 GMT by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project GoaDemoCopy
@@ -12,7 +12,7 @@ The shared link for [GoaDemoCopy is here](https://script.google.com/d/1SL3HmAL2M
 ScriptToken| server_js
 OnceOff| server_js
 ServiceAccount| server_js
-CloudVision| server_js
+MsEmotion| server_js
 Goth| server_js
 Pull| server_js
 asme| html
@@ -27,6 +27,7 @@ Picker| server_js
 asuser| html
 WebApp| server_js
 mainasme.js| html
+CloudVision| server_js
 ### Directly referenced libraries
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
