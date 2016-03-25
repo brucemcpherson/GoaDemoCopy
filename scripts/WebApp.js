@@ -7,7 +7,7 @@
 // since Im using the same webapp for multiplt purposes
 // these describe what each do
 // change TYPE to the run required
-var PARAMS = {
+var Globals = {
   TYPE:'asuser',              // or asme
   PACKAGE_NAME:'cloudvision',     // always this
   asuser: {
@@ -19,7 +19,13 @@ var PARAMS = {
     props:PropertiesService.getScriptProperties(),
     clone:false,
     html:'asme'
-  }    
+  },
+  getGoa: function() {
+    return Goth.getGoa (Globals.PACKAGE_NAME, Globals[Globals.TYPE].props);
+  },
+  getToken: function () {
+    return Goth.getToken (Globals.PACKAGE_NAME, Globals[Globals.TYPE].props);
+  }  
 };
 
 function doGet (e) {
@@ -29,15 +35,15 @@ function doGet (e) {
   // will ensure they are preservered during the multiple oauth2 processes
   
   // im using this same for each, so need a way to swicth between
-  var demo = PARAMS[PARAMS.TYPE];
+  var demo = Globals[Globals.TYPE];
   if (!demo) {
-    throw 'set PARAMS.TYPE to match one of the properties of PARAMS';
+    throw 'set Globals.TYPE to match one of the properties of PARAMS';
   }
   
   // it may need cloning if user props required
   if (demo.clone) {
     cGoa.GoaApp.userClone( 
-      PARAMS.PACKAGE_NAME, 
+      Globals.PACKAGE_NAME, 
       PropertiesService.getScriptProperties() , 
       demo.props
     );
@@ -45,7 +51,7 @@ function doGet (e) {
  
   // get the goa
   var goa = cGoa.GoaApp.createGoa(
-    PARAMS.PACKAGE_NAME, 
+    Globals.PACKAGE_NAME, 
     demo.props
   ).execute(e);
   
