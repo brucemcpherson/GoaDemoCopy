@@ -30,7 +30,7 @@ function oneOffSetting() {
     scopes : cGoa.GoaApp.scopesGoogleExpand (['cloud-platform']),
     service: 'google',
     packageName: 'cloudvision',
-    apiKey:'AIzaSyAc728IODtd8s6t8WnpnC2JtrMdGvZKbdg'  // you can store arbirary properties in goa too.
+    apiKey:'AIzaSxxxxxxxxxxg'  // you can store arbirary properties in goa too.
   });
   */
 
