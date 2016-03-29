@@ -3,7 +3,7 @@
 <?!= HtmlService.createHtmlOutputFromFile('styles.css').getContent(); ?>
 
 <div class=content>
-<h2>Cloud vision library</h2>
+<h2>Comparing detection providers</h2>
 </div>
 
 <div class="content" id="control" style="display:block;">
@@ -11,8 +11,9 @@
   <div class="block">
     <label for="feature">Type of detection</label>
     <select  id="feature">
-    <option value="LABEL_DETECTION" selected>Label detection</option>
-    <option value="FACE_DETECTION">Face detection</option>
+    <option value="LABEL_GOOGLE" selected>Label detection - Google</option>
+    <option value="EMOTION_VALUES_GOOGLE">Emotion Values - Google</option>
+    <option value="EMOTION_VALUES_MICROSOFT">Emotion Values - Microsoft</option>
     </select>
   </div>  
   
