@@ -46,9 +46,7 @@ var MsEmotion = (function (ns) {
     // now generate requests for those that were not in cache
     var requests = [];
     dataPackage.forEach(function(d) {
-
       if (!d.data) {
-        
         // generate a request package
         requests.push(d.file.b64);
         d.requestIndex = requests.length;
@@ -84,7 +82,6 @@ var MsEmotion = (function (ns) {
           if (!resultProperty) {
             throw 'result property to use for ' + d.feature + ' is not defined'
           }
-          Logger.log(Object.keys(responses[d.requestIndex-1]));
           d.data = responses[d.requestIndex-1][resultProperty];
 
           // use a big expiration time
@@ -98,77 +95,14 @@ var MsEmotion = (function (ns) {
       });
     }
     
+    // finally google can do multiple responses,ms cant
+    dataPackage.forEach (function (d) {
+      d.data = [d.data];
+    });
     return dataPackage;
   };
 
-  
-  /**
-  * get all the image files to process and encode them
-  * even if result is in cache, we still need to get the image anyway
-  *@param {string} accessToken the access token
-  * @param {string} folderId the folder id containing the images
-  * @return {[*]} the files encoded
-  */
-  ns.getFiles = function (accessToken, folderId) {
-    
-    // get the folder 
-    var folder = DriveApp.getFolderById(folderId);
-    if (!folder) {
-      throw 'cant find image folder ' + folderId;
-    }
-  
-    // get all the files in the folder
-    var iterator = folder.searchFiles("mimeType contains 'image/'");
-    var files = [];
-    while (iterator.hasNext()) {
-      var file = iterator.next();
-      if (files.length >= ns.params.maxFiles) {
-        throw 'choose a smaller folder - max files allowed is ' + ns.params.maxFiles;
-      }
-      var b64 = Utilities.base64Encode(file.getBlob().getBytes());
-      files.push({
-        fileName:file.getName(),
-        b64:b64,
-        type:file.getMimeType(),
-        id:file.getId(),
-        digest:cUseful.Utils.keyDigest(b64)
-      });
-    }
-    
-    return files;
-    
-  };
-  
+
   return ns;
 }) (MsEmotion || {});
-/**
- * log out the result of both tests
- * @param {string} accessToken the access token
- */
-function logMsEmotion (accessToken) {
 
-  // i have some animal images in this folder
-  // findout what they are of
-
-  var result = Pull.pets (accessToken);
-  Logger.log ( JSON.stringify(result.map(function(d) {
-    return {
-      name:d.file.fileName,
-      data:d.data,
-      scales:d.scales
-    };
-  })));
-  
-  // some faces
-  var result = Pull.faces (accessToken);
-  
-  // just summarize
-  Logger.log ( JSON.stringify(result.map(function(d) {
-    return {
-      name:d.file.fileName,
-      data:d.data,
-      scales:d.scales
-    };
-  })));
-  
-}
