@@ -4,7 +4,7 @@
 * @namespace Client
 */
 var Client = (function (ns) {
-  
+
   /**
   * provoke a server activity and time it
   * @return {object} the provoked item
@@ -12,6 +12,10 @@ var Client = (function (ns) {
   ns.provoke = function () {
     
     App.reportMessage('starting...',true);
+    
+    // shortcut
+    var ag = App.globals;
+    var action = ag.actions[ag.actions.selected];
     
     google.script.run
     
@@ -25,18 +29,20 @@ var Client = (function (ns) {
     .withSuccessHandler ( function (result) {
       
       // render result
+
+      
       App.reportMessage('rendering...');
-      App.globals.result = result;
-      if (App.globals.divs.feature.value === "EMOTION_DETECTION") {
-        Render.emotion();
-      }
-      else {
-        Render.report();
-      }
+      ag.result = result;
+      
+      // select the appropriate reporting
+      
+      
+      // do the report/chart
+      Render[action.render] ();
 
       // adjust what's shown
-      Render.hide (App.globals.divs.control,true);
-      Render.hide (App.globals.divs.render,false);
+      Render.hide (ag.divs.control,true);
+      Render.hide (ag.divs.render,false);
       
       // clear any messages
       App.reportMessage('');
@@ -46,12 +52,12 @@ var Client = (function (ns) {
     .expose(
       'Server',
       'provoke', {
-        folderId:App.globals.divs.folderId.value, 
-        feature:App.globals.divs.feature.value === "EMOTION_DETECTION" ? "FACE_DETECTION" : App.globals.divs.feature.value,
-        maxResponses:parseInt(App.globals.divs.maxResponses.value,10),
-        dataFilter:App.globals.divs.feature.value === "EMOTION_DETECTION" || 
-          App.globals.divs.feature.value === "FACE_DETECTION" ? "EMOTION" : "",
-        noCache:App.globals.noCache
+        folderId:ag.divs.folderId.value, 
+        feature:action.feature,
+        dataFilters:action.dataFilters,
+        maxResponses:parseInt(ag.divs.maxResponses.value,10),
+        noCache:ag.noCache,
+        providers:action.providers
       }
     );
   };
