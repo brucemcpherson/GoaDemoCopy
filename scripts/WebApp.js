@@ -8,7 +8,7 @@
 // these describe what each do
 // change TYPE to the run required
 var Globals = {
-  TYPE:'asuser',              // or asme
+  TYPE:'asuser',              // asuser or asme
   PACKAGE_NAME:'cloudvision',     // always this
   asuser: {
     props:PropertiesService.getUserProperties(),
