@@ -20,7 +20,7 @@ function oneOffSetting() {
       scopes : cGoa.GoaApp.scopesGoogleExpand (['cloud-platform','drive']),
       service:'google',
       apiKey:'AIzaxxxxh632MbPE',
-      msEmotionKey:'e9665ee6e581476f9d0daf2776849ab2' // you can store arbirary properties in goa too.
+      msEmotionKey:'e9xxxxxxxxxab2' // you can store arbirary properties in goa too.
     }));
   /*
   // alternatively ... you can also set the credentials explicitly like this....
