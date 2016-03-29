@@ -1,15 +1,7 @@
-function testCloudvision() {
-  Logger.log (
-    CloudVision.query (
-      Goth.getToken(PARAMS.PACKAGE_NAME, PARAMS[PARAMS.TYPE].props),
-      '0B92ExLh4POiZYzZZT3d0aU9VV1U',
-      'LABEL_DETECTION',
-      2
-    ).map(function(d) {
-      return {data:d.data,scales:d.scales};
-    }));
-}
-
+/**
+ * used to do cloudvision queries
+ * @namespace Cloudvision
+ */
 var CloudVision = (function (ns) {
 
   ns.params = {
@@ -195,34 +187,4 @@ var CloudVision = (function (ns) {
   
   return ns;
 }) (CloudVision || {});
-/**
- * log out the result of both tests
- * @param {string} accessToken the access token
- */
-function logVision (accessToken) {
 
-  // i have some animal images in this folder
-  // findout what they are of
-
-  var result = Pull.pets (accessToken);
-  Logger.log ( JSON.stringify(result.map(function(d) {
-    return {
-      name:d.file.fileName,
-      data:d.data,
-      scales:d.scales
-    };
-  })));
-  
-  // some faces
-  var result = Pull.faces (accessToken);
-  
-  // just summarize
-  Logger.log ( JSON.stringify(result.map(function(d) {
-    return {
-      name:d.file.fileName,
-      data:d.data,
-      scales:d.scales
-    };
-  })));
-  
-}
