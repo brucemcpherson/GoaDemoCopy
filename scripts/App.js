@@ -5,11 +5,37 @@
  * @namespace App
  */
 var App = (function (ns) {
- 
+
   // static with no effect on both client and server
   ns.globals = {
     result:null,
     nocache:false,
+    actions: {
+      selected:null,
+      "LABEL_GOOGLE":{
+        feature:"LABEL_DETECTION",
+        render:'report',
+        providers:["GOOGLE"]
+      },
+      "EMOTION_VALUES_GOOGLE":{
+        feature:"FACE_DETECTION",
+        render:'report',
+        dataFilters:["EMOTION"],
+        providers:["GOOGLE"]
+      },
+      "EMOTION_VALUES_MICROSOFT":{
+        feature:"FACE_DETECTION",
+        render:'report',
+        dataFilters:["MSEMOTION"],
+        providers:["MICROSOFT"]
+      },
+      "EMOTION_VALUES_CHART":{
+        feature:"FACE_DETECTION",
+        render:'chart',
+        dataFilters:["MSEMOTION","EMOTION"],
+        providers:["MICROSOFT","GOOGLE"]
+      }
+    },
     styles: {
       image: {
         width:"100px",
@@ -20,7 +46,7 @@ var App = (function (ns) {
       }
     }
   };
-  
+
   // for use on client side.
   ns.init = function () {
     ns.globals.divs = {
@@ -65,6 +91,7 @@ var App = (function (ns) {
         element.addEventListener ( what , func , false);
       }
     }
+
     
     // handle a picker to get a different folder
     listen (ns.globals.divs.getFolder , "click" , function (e) {
@@ -99,6 +126,7 @@ var App = (function (ns) {
     });
     
     listen(ns.globals.divs.go,"click", function (e) {
+      ns.globals.actions.selected = ns.globals.divs.feature.value;
       Client.provoke();
     });
     
