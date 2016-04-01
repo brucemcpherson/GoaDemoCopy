@@ -19,8 +19,8 @@ function oneOffSetting() {
       fileId:'0B92ExLh4POiZUjIzbXFreTVPdjQ',
       scopes : cGoa.GoaApp.scopesGoogleExpand (['cloud-platform','drive']),
       service:'google',
-      apiKey:'AIzaxxxxh632MbPE',
-      msEmotionKey:'e9xxxxxxxxxab2' // you can store arbirary properties in goa too.
+      apiKey:'AIzaSyCKKG_sziXl-omNoRR_CEvwswhh632MbPE',
+      msEmotionKey:'e9665ee6e581476f9d0daf2776849ab2' // you can store arbirary properties in goa too.
     }));
   /*
   // alternatively ... you can also set the credentials explicitly like this....
@@ -30,7 +30,7 @@ function oneOffSetting() {
     scopes : cGoa.GoaApp.scopesGoogleExpand (['cloud-platform']),
     service: 'google',
     packageName: 'cloudvision',
-    apiKey:'AIzaSxxxxxxxxxxg'  // you can store arbirary properties in goa too.
+    apiKey:'Axxxxxxxxxxxxxxxxbdg'  // you can store arbirary properties in goa too.
   });
   */
 
