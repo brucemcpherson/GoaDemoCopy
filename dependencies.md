@@ -1,5 +1,5 @@
 # Google Apps Script Project: GoaDemoCopy
-This repo (GoaDemoCopy) was automatically updated on 01 April 2016 13:18:26 BST by GasGit
+This repo (GoaDemoCopy) was automatically updated on 27 April 2016 16:20:28 BST by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project GoaDemoCopy
@@ -31,13 +31,13 @@ CloudVision| server_js
 ### Directly referenced libraries
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
-cGoa| cGoa|MZx5DzNPsYjVyZaR67xXJQai_d-phDA33|14|no|[here](libraries/cGoa "library source")
 cUseful| cUseful|Mcbr-v4SsYKJP7JMohttAZyz3TLx7pV4j|43|no|[here](libraries/cUseful "library source")
+cGoa| cGoa|MZx5DzNPsYjVyZaR67xXJQai_d-phDA33|14|no|[here](libraries/cGoa "library source")
 ### All dependencies and sub dependencies
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
+cUseful| cUseful|Mcbr-v4SsYKJP7JMohttAZyz3TLx7pV4j|43|no|[here](libraries/cUseful "library source")
 cGoa| cGoa|MZx5DzNPsYjVyZaR67xXJQai_d-phDA33|14|no|[here](libraries/cGoa "library source")
-cUseful| cUseful|Mcbr-v4SsYKJP7JMohttAZyz3TLx7pV4j|30|no|[here](libraries/cUseful "library source")
 ### Enabled Google Services
 no libraries discovered
 ###Need more detail ?
