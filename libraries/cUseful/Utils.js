@@ -50,11 +50,11 @@ var Utils = (function (ns) {
       throw ns.errorStack("you need to specify a function for rateLimitBackoff to execute");
     }
     
-    function waitABit () {
+    function waitABit (theErr) {
       
       //give up?
       if (attempts > options.maxAttempts) {
-        throw errorStack(err + " (tried backing off " + (attempts-1) + " times");
+        throw errorStack(theErr + " (tried backing off " + (attempts-1) + " times");
       }
       else {
         // wait for some amount of time based on how many times we've tried plus a small random bit to avoid races
@@ -75,7 +75,7 @@ var Utils = (function (ns) {
         if(options.logAttempts) { 
           Logger.log("backoff lookahead:" + attempts);
         }
-        waitABit();
+        waitABit('lookahead:');
         return ns.expBackoff ( callBack, options, attempts+1) ;
         
       }
@@ -91,7 +91,7 @@ var Utils = (function (ns) {
       
       // failed due to rate limiting?
       if (options.checker(err)) {
-        waitABit();
+        waitABit(err);
         return ns.expBackoff ( callBack, options, attempts+1) ;
       }
       else {
@@ -133,7 +133,8 @@ var Utils = (function (ns) {
             "Service invoked too many times in a short time:",
             "Exception: Internal error.",
             "User Rate Limit Exceeded",
-            "Exception: ???????? ?????: DriveApp."
+            "Exception: ???????? ?????: DriveApp.",
+            "Exception: Address unavailable"
            ]
     .some(function(e){
       return  errorText.toString().slice(0,e.length) == e  ;
