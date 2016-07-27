@@ -1,5 +1,5 @@
 # Google Apps Script Project: GoaDemoCopy
-This repo (GoaDemoCopy) was automatically updated on 27 April 2016 16:20:28 BST by GasGit
+This repo (GoaDemoCopy) was automatically updated on 27 July 2016 10:36:57 BST by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project GoaDemoCopy
